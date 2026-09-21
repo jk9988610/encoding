@@ -1,0 +1,110 @@
+{
+  "name": "encoding-unify",
+  "displayName": "编码统一 (Encoding Unify)",
+  "description": "扫描当前工作区目录，一键统一为 UTF-8 无 BOM + LF（含 GBK→UTF-8 转码、去 BOM、统一换行），弹窗显示待转码数量并确认后执行。",
+  "version": "0.2.1",
+  "publisher": "local-tools",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:encodingUnify.unify",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "encodingUnify.unify",
+        "title": "编码统一: 扫描并统一当前目录",
+        "category": "Encoding Unify"
+      }
+    ],
+    "configuration": {
+      "title": "编码统一",
+      "properties": {
+        "encodingUnify.defaultExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".c",
+            ".h",
+            ".cpp",
+            ".hpp",
+            ".cc",
+            ".s",
+            ".inc",
+            ".txt",
+            ".md",
+            ".cmake",
+            ".ld",
+            ".lds",
+            ".json",
+            ".yml",
+            ".yaml",
+            ".ini",
+            ".cfg",
+            ".py",
+            ".uvprojx",
+            ".uvoptx",
+            ".uvguix",
+            ".xml"
+          ],
+          "description": "参与统一的后缀（不带点也行）。留空使用默认固件工程集合。"
+        },
+        "encodingUnify.excludeDirs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".git",
+            ".svn",
+            ".hg",
+            ".cache",
+            "node_modules",
+            "out",
+            "_build",
+            "build",
+            "Objects",
+            "Listings",
+            "__pycache__",
+            ".vscode",
+            ".idea",
+            "_encoding_backup"
+          ],
+          "description": "扫描时跳过的目录名。"
+        },
+        "encodingUnify.targetNewline": {
+          "type": "string",
+          "enum": [
+            "lf",
+            "crlf",
+            "keep"
+          ],
+          "default": "lf",
+          "description": "统一后的换行风格。keep = 保留各文件原换行。"
+        },
+        "encodingUnify.backup": {
+          "type": "boolean",
+          "default": true,
+          "description": "写盘前在目录下生成 _encoding_backup 备份。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.3.0"
+  }
+}
