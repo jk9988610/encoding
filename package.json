@@ -2,7 +2,7 @@
   "name": "encoding-unify",
   "displayName": "编码统一 (Encoding Unify)",
   "description": "扫描当前工作区目录，一键统一为 UTF-8 无 BOM + LF（含 GBK→UTF-8 转码、去 BOM、统一换行），弹窗显示待转码数量并确认后执行。",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "local-tools",
   "engines": {
     "vscode": "^1.80.0"

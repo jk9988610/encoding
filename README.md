@@ -28,7 +28,7 @@
 ## 安装 VSIX
 
 ```sh
-code --install-extension encoding-unify-0.2.1.vsix
+code --install-extension encoding-unify-0.2.2.vsix
 ```
 
 ## 与 Python 版的关系
